@@ -56,7 +56,6 @@ public class DiscardServer {
         EventLoopGroup workerGroup = new NioEventLoopGroup();//进行网络通信（读写）
         System.out.println("准备运行端口：" + port);
         try {
-        	
             /**
              * ServerBootstrap 是一个启动NIO服务的辅助启动类 你可以在这个服务中直接使用Channel
              * 创建ServerBootstrap对象，它是Netty用于启动NIO服务端的辅助启动类，目的是降低服务端的开发复杂度。

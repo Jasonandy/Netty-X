@@ -60,8 +60,6 @@ public class DiscardClient {
 			
 			//future.channel().writeAndFlush(Unpooled.copiedBuffer("HelloWorld!".getBytes()));
 
-			// 等待客户端链路关闭
-            //当客户端连接关闭之后，客户端主函数退出.
 			future.channel().closeFuture().sync();
 		} finally {
             // 优雅退出，释放NIO线程组

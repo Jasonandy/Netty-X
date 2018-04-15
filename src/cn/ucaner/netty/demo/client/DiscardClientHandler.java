@@ -68,8 +68,7 @@ public class DiscardClientHandler extends ChannelHandlerAdapter{
 	  
     @Override  
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception { 
-    	// 释放资源
-        //当发生异常时，打印异常日志，释放客户端资源。
+    	
         cause.printStackTrace();  
         ctx.close();  
     }  

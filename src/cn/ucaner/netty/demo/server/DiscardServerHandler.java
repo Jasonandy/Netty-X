@@ -70,7 +70,7 @@ public class DiscardServerHandler extends ChannelHandlerAdapter{
             //通过ChannelHandlerContext的write方法异步发送应答消息给客户端。
             ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()));  
             
-           // ((ChannelFuture) ctx).addListener(ChannelFutureListener.CLOSE);  
+            //((ChannelFuture) ctx).addListener(ChannelFutureListener.CLOSE);  
         } finally {
             /**
              * ByteBuf是一个引用计数对象，这个对象必须显示地调用release()方法来释放。
