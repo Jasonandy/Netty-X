@@ -1,10 +1,9 @@
 /**
  * <html>
  * <body>
- *  <P> Copyright 2014 广东天泽阳光康众医疗投资管理有限公司. 粤ICP备09007530号-15</p>
+ *  <P> Copyright 1994-2018 JasonInternational </p>
  *  <p> All rights reserved.</p>
- *  <p> Created on 2018年4月15日 上午11:48:02</p>
- *  <p> Created by DaoDou</p>
+ *  <p> Created by Jason</p>
  *  </body>
  * </html>
  */

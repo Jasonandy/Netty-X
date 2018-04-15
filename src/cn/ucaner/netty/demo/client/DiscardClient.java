@@ -10,7 +10,6 @@
 package cn.ucaner.netty.demo.client;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
@@ -21,9 +20,8 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 /**     
  * @Package：cn.ucaner.netty.demo.client   
  * @ClassName：DiscardClient   
- * @Description：   <p> TODO</p>
- * @Author： - DaoDou   
- * @CreatTime：2018年4月15日 上午11:47:03   
+ * @Description：   <p> DiscardClient</p>
+ * @Author： - Jason   
  * @Modify By：   
  * @ModifyTime：  2018年4月15日
  * @Modify marker：   
