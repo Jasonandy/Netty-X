@@ -2,14 +2,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- NettyX -->
+  <!-- Netty-X -->
   <groupId>cn.ucaner</groupId>
   <artifactId>netty</artifactId>
   <version>20180415</version>
   <packaging>war</packaging>
 
-  <!-- Made by Jason -->
-  <name>netty</name>
+  <!-- Made by Jason  just for Study -->
+  <name>Netty-X</name>
   <url>http://netty.ucaner.cn</url>
 
   <!-- 配置 -->
@@ -20,6 +20,14 @@
 
   <!--  依赖 -->
   <dependencies>
+  
+  	<!--  add netty  -->
+  	<dependency>
+	    <groupId>io.netty</groupId>
+	    <artifactId>netty-all</artifactId>
+	    <version>5.0.0.Alpha2</version>
+	</dependency>
+	
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
