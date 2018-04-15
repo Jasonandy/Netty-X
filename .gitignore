@@ -1,0 +1,6 @@
+# add by Jason for Init project
+/target/
+/.settings/
+/.classpath
+/.project
+# end
