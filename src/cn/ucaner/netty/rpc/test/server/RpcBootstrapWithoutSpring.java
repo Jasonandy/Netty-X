@@ -17,6 +17,7 @@ import cn.ucaner.netty.rpc.test.client.HelloService;
 * @version    V1.0
  */
 public class RpcBootstrapWithoutSpring {
+	
     private static final Logger logger = LoggerFactory.getLogger(RpcBootstrapWithoutSpring.class);
 
     public static void main(String[] args) {
