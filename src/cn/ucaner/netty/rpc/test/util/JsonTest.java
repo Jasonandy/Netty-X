@@ -19,6 +19,7 @@ import cn.ucaner.netty.rpc.test.server.HelloServiceImpl;
 * @version    V1.0
  */
 public class JsonTest {
+	
     public static void main(String[] args){
         RpcResponse response = new RpcResponse();
         response.setRequestId(UUID.randomUUID().toString());

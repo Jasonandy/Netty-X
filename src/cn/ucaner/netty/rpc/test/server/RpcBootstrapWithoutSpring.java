@@ -21,8 +21,8 @@ public class RpcBootstrapWithoutSpring {
     private static final Logger logger = LoggerFactory.getLogger(RpcBootstrapWithoutSpring.class);
 
     public static void main(String[] args) {
-        String serverAddress = "127.0.0.1:18866";
-        ServiceRegistry serviceRegistry = new ServiceRegistry("127.0.0.1:2181");
+        String serverAddress = "127.0.0.1:8280";
+        ServiceRegistry serviceRegistry = new ServiceRegistry("67.218.158.137:2181");
         RpcServer rpcServer = new RpcServer(serverAddress, serviceRegistry);
         HelloService helloService = new HelloServiceImpl();
         rpcServer.addService("cn.ucaner.netty.rpc.test.client.HelloService", helloService);

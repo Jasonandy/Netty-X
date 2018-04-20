@@ -21,8 +21,10 @@ import cn.ucaner.netty.rpc.test.client.PersonService;
 * @version    V1.0
  */
 public class PersonCallbackTest {
+	
     public static void main(String[] args) {
-        ServiceDiscovery serviceDiscovery = new ServiceDiscovery("127.0.0.1:2181");
+    	//67.218.158.137:2181 127.0.0.1:8280
+        ServiceDiscovery serviceDiscovery = new ServiceDiscovery("67.218.158.137:2181");
         final RpcClient rpcClient = new RpcClient(serviceDiscovery);
         final CountDownLatch countDownLatch = new CountDownLatch(1);
 

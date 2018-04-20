@@ -16,6 +16,6 @@ public class RpcBootstrap {
     @SuppressWarnings("resource")
 	public static void main(String[] args) {
     	//classpath:/rpc/server/server-rpc.xml
-        new ClassPathXmlApplicationContext("server-rpc.xml");
+        new ClassPathXmlApplicationContext("classpath:/rpc/server/server-rpc.xml");
     }
 }
