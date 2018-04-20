@@ -1,0 +1,19 @@
+package cn.ucaner.netty.rpc.registry;
+
+/**
+* @Package：cn.ucaner.netty.rpc.registry   
+* @ClassName：Constant   
+* @Description：   <p> ZooKeeper constant</p>
+* @Author： - huangyong  https://github.com/luxiaoxun/NettyRpc     
+* @Modify By：   
+* @Modify marker：   
+* @version    V1.0
+ */
+public interface Constant {
+
+    int ZK_SESSION_TIMEOUT = 5000;
+
+    String ZK_REGISTRY_PATH = "/registry";
+    
+    String ZK_DATA_PATH = ZK_REGISTRY_PATH + "/data";
+}
