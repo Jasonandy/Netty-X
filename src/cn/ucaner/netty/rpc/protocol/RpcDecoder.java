@@ -8,7 +8,10 @@ import java.util.List;
 /**
 * @Package：cn.ucaner.netty.rpc.protocol   
 * @ClassName：RpcDecoder   
-* @Description：   <p> RPC Decoder </p>
+* @Description：   <p> RPC Decoder 
+* </br> RpcDecoder提供 RPC 解码，只需扩展 Netty 的ByteToMessageDecoder抽象类的decode方法
+* </br> https://my.oschina.net/huangyong/blog/361751
+* </p>
 * @Author： - huangyong    https://github.com/luxiaoxun/NettyRpc 
 * @Modify By：   
 * @Modify marker：   

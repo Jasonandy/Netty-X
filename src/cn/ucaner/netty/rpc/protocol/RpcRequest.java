@@ -10,10 +10,30 @@ package cn.ucaner.netty.rpc.protocol;
 * @version    V1.0
  */
 public class RpcRequest {
+	
+	/*
+	 * identify Request 
+	 */
     private String requestId;
+    
+    /**
+     * Service className
+     */
     private String className;
+    
+    /**
+     * Service Methods
+     */
     private String methodName;
+    
+    /**
+     * Methods parmas 
+     */
     private Class<?>[] parameterTypes;
+    
+    /**
+     * params Type.
+     */
     private Object[] parameters;
 
     public String getRequestId() {

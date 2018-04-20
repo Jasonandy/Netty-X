@@ -33,7 +33,8 @@ import cn.ucaner.netty.rpc.registry.ServiceRegistry;
 /**
 * @Package：cn.ucaner.netty.rpc.server   
 * @ClassName：RpcServer   
-* @Description：   <p> RpcServer http://www.cnblogs.com/luxiaoxun/p/5272384.html</p>
+* @Description：   <p> RpcServer http://www.cnblogs.com/luxiaoxun/p/5272384.html 
+* </br> https://my.oschina.net/huangyong/blog/361751 </p>
 * @Author： -huangyong, luxiaoxun    https://github.com/luxiaoxun/NettyRpc  
 * @Modify By：   
 * @Modify marker：   
@@ -43,10 +44,12 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
 
     private static final Logger logger = LoggerFactory.getLogger(RpcServer.class);
 
-    private String serverAddress;
-    private ServiceRegistry serviceRegistry;
+    private String serverAddress;//服务地址
+    
+    private ServiceRegistry serviceRegistry;//ServiceRegistry 服务注册地址
 
-    private Map<String, Object> handlerMap = new HashMap<>();
+    private Map<String, Object> handlerMap = new HashMap<>();// 存放接口名与服务对象之间的映射关系
+    
     private static ThreadPoolExecutor threadPoolExecutor;
 
     private EventLoopGroup bossGroup = null;
@@ -119,9 +122,9 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
                         public void initChannel(SocketChannel channel) throws Exception {
                             channel.pipeline()
                                     .addLast(new LengthFieldBasedFrameDecoder(65536, 0, 4, 0, 0))
-                                    .addLast(new RpcDecoder(RpcRequest.class))
-                                    .addLast(new RpcEncoder(RpcResponse.class))
-                                    .addLast(new RpcHandler(handlerMap));
+                                    .addLast(new RpcDecoder(RpcRequest.class)) //将 RPC 请求进行解码（为了处理请求）
+                                    .addLast(new RpcEncoder(RpcResponse.class))//RPC 响应进行编码（为了返回响应）
+                                    .addLast(new RpcHandler(handlerMap));// 处理 RPC请求
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
@@ -135,9 +138,8 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
             logger.info("Server started on port {}", port);
 
             if (serviceRegistry != null) {
-                serviceRegistry.register(serverAddress);
+                serviceRegistry.register(serverAddress);//注册服务地址
             }
-
             future.channel().closeFuture().sync();
         }
     }

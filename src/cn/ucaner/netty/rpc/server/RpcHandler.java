@@ -19,7 +19,9 @@ import cn.ucaner.netty.rpc.protocol.RpcResponse;
 /**
 * @Package：cn.ucaner.netty.rpc.server   
 * @ClassName：RpcHandler   
-* @Description：   <p> RpcHandler </p>
+* @Description：   <p> RpcHandler 
+* </br> RpcHandler中处理 RPC 请求，只需扩展 Netty 的SimpleChannelInboundHandler抽象类
+* </p>
 * @Author： - luxiaoxun    https://github.com/luxiaoxun/NettyRpc   http://www.cnblogs.com/luxiaoxun/p/5272384.html
 * @Modify By：   
 * @Modify marker：   

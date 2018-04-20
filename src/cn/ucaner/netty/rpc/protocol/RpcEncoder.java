@@ -7,7 +7,9 @@ import io.netty.handler.codec.MessageToByteEncoder;
 /**
 * @Package：cn.ucaner.netty.rpc.protocol   
 * @ClassName：RpcEncoder   
-* @Description：   <p> RPC Encoder </p>
+* @Description：   <p> RPC Encoder 
+* </br>RpcEncoder提供 RPC 编码，只需扩展 Netty 的MessageToByteEncoder抽象类的encode方法即可
+* </p>
 * @Author： - huangyong    https://github.com/luxiaoxun/NettyRpc    
 * @Modify By：   
 * @Modify marker：   
