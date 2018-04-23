@@ -26,6 +26,10 @@ public class RpcBootstrapWithoutSpring {
         RpcServer rpcServer = new RpcServer(serverAddress, serviceRegistry);
         HelloService helloService = new HelloServiceImpl();
         rpcServer.addService("cn.ucaner.netty.rpc.test.client.HelloService", helloService);
+        
+        //registry HelloNettyRpc 
+        //HelloNettyRpcImpl helloNettyRpc = new HelloNettyRpcImpl();
+        //rpcServer.addService("cn.ucaner.netty.rpc.test.interfaces.HelloNettyRpc", helloNettyRpc);
         try {
             rpcServer.start();
         } catch (Exception ex) {

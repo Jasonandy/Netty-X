@@ -44,6 +44,7 @@ import cn.ucaner.netty.rpc.registry.ServiceRegistry;
 * 		此时就必须让该Bean先获取Spring容器，然后借助于Spring容器实现该功能。
 * 		为了让Bean获取它所在的Spring容器，可以让该Bean实现ApplicationContextAware接口。
 * 
+* </br> https://yq.aliyun.com/articles/50480
 * </p>
 * @Author： -huangyong, luxiaoxun    https://github.com/luxiaoxun/NettyRpc  
 * @Modify By：   
@@ -76,6 +77,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
 
     /**
      * RpcService 检测到注解   加载注解过的Interface到applicationContext   add By Jason
+     *  				  --  服务在启动的时候扫描得到所有的服务接口及其实现
      */
     @Override
     public void setApplicationContext(ApplicationContext ctx) throws BeansException {
@@ -161,6 +163,9 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
             ChannelFuture future = bootstrap.bind(host, port).sync();
             logger.info("Server started on port {}", port);
 
+            /**
+             * 扫描到有注解的数据进行注册处理   add by Jason
+             */
             if (serviceRegistry != null) {
                 serviceRegistry.register(serverAddress);//注册服务地址
             }

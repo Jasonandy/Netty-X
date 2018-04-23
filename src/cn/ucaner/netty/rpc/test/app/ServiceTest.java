@@ -11,6 +11,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -21,6 +23,7 @@ import cn.ucaner.netty.rpc.client.proxy.IAsyncObjectProxy;
 import cn.ucaner.netty.rpc.test.client.HelloService;
 import cn.ucaner.netty.rpc.test.client.Person;
 import cn.ucaner.netty.rpc.test.client.PersonService;
+import cn.ucaner.netty.rpc.test.interfaces.HelloNettyRpc;
 
 /**
 * @Package：cn.ucaner.netty.rpc.test.app   
@@ -32,18 +35,46 @@ import cn.ucaner.netty.rpc.test.client.PersonService;
 * @version    V1.0
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:/rpc/server/server-rpc.xml")
+@ContextConfiguration(locations = "classpath:/rpc/client/client-rpc.xml")
 public class ServiceTest {
 
+	private static final Logger logger = LoggerFactory.getLogger(ServiceTest.class);
+	
     @Autowired
     private RpcClient rpcClient;
 
+    /**
+     * @Description: Test echo for Rpc success!
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
+    @Test
+    public void helloEcho() {
+        HelloService helloService = RpcClient.create(HelloService.class);
+        String result = helloService.echo("Rpc.");
+        logger.info("result - {}",result);//cn.ucaner.netty.rpc.test.app.ServiceTest  - result - null
+        //cn.ucaner.netty.rpc.test.app.ServiceTest  - result -  - > I'm Fine Thks.
+    }
+    
+    @Test
+    public void HelloNettyRpcEcho() {
+    	HelloNettyRpc helloNettyRpc = RpcClient.create(HelloNettyRpc.class);
+        String result = helloNettyRpc.echo("Rpc.");
+        String rpcStr = helloNettyRpc.helloWorld();
+        logger.info("result - {}",result);//cn.ucaner.netty.rpc.test.app.ServiceTest  - result - null
+        logger.info("result - {}",rpcStr);
+        //cn.ucaner.netty.rpc.test.app.ServiceTest  - result -  - > I'm Fine Thks.
+    }
+    
+    
+    
     @Test
     public void helloTest1() {
-        HelloService helloService = rpcClient.create(HelloService.class);
-        String result = helloService.hello("World");
-        Assert.assertEquals("Hello! World", result);
+        HelloService helloService = RpcClient.create(HelloService.class);
+        String result = helloService.hello("Jason");
+        Assert.assertEquals("Hello! Jason", result);
+        //Assert.assertEquals("Hello! World", result);
     }
+    
 
     @Test
     public void helloTest2() {

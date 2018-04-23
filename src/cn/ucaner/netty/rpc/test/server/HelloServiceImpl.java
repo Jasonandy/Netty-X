@@ -29,4 +29,9 @@ public class HelloServiceImpl implements HelloService {
     public String hello(Person person) {
         return "Hello! " + person.getFirstName() + " " + person.getLastName();
     }
+
+	@Override
+	public String echo(String ping) {
+		return ping != null? ping + " - > I'm Fine Thks." : "Hello. \r I'm NettyRpc";
+	}
 }

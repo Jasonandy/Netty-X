@@ -15,7 +15,7 @@ import cn.ucaner.netty.rpc.test.client.PersonService;
 * @Package：cn.ucaner.netty.rpc.test.app   
 * @ClassName：PersonCallbackTest   
 * @Description：   <p> PersonCallbackTest </p>
-* @Author： - luxiaoxun   https://github.com/luxiaoxun/NettyRpc
+* @Author： - luxiaoxun   https://github.com/luxiaoxun/NettyRpc  http://www.importnew.com/24689.html
 * @Modify By：   
 * @Modify marker：   
 * @version    V1.0
