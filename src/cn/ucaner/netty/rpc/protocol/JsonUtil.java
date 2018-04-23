@@ -16,13 +16,14 @@ import java.util.HashMap;
 /**
 * @Package：cn.ucaner.netty.rpc.protocol   
 * @ClassName：JsonUtil   
-* @Description：   <p> JsonUtil  </p>
+* @Description：   <p> JsonUtil  Based On com.fasterxml.jackson </p>
 * @Author： - luxiaoxun - https://github.com/luxiaoxun/NettyRpc    
 * @Modify By：   
 * @Modify marker：   
 * @version    V1.0
  */
 public class JsonUtil {
+	
     private static ObjectMapper objMapper = new ObjectMapper();
 
     static {
@@ -40,6 +41,13 @@ public class JsonUtil {
         objMapper.configure(JsonParser.Feature.IGNORE_UNDEFINED, true);
     }
 
+    /**
+     * 
+     * @Description: serialize 对象序列化成数组
+     * @param obj
+     * @return byte[]
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
     public static <T> byte[] serialize(T obj) {
         byte[] bytes = new byte[0];
         try {
@@ -50,6 +58,13 @@ public class JsonUtil {
         return bytes;
     }
 
+    /**
+     * @Description: 数组反序列化为Object
+     * @param data
+     * @param cls
+     * @return T
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
     public static <T> T deserialize(byte[] data, Class<T> cls) {
         T obj = null;
         try {
@@ -60,6 +75,13 @@ public class JsonUtil {
         return obj;
     }
 
+    /**
+     * @Description: JSON convert to Object
+     * @param json
+     * @param cls
+     * @return type
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
     public static <type> type jsonToObject(String json, Class<?> cls) {
         type obj = null;
         JavaType javaType = objMapper.getTypeFactory().constructType(cls);
@@ -71,6 +93,14 @@ public class JsonUtil {
         return obj;
     }
 
+    /**
+     * @Description: jsonToObjectList 
+     * @param json
+     * @param collectionClass
+     * @param elementClass
+     * @return type
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
     public static <type> type jsonToObjectList(String json,
                                                Class<?> collectionClass, Class<?>... elementClass) {
         type obj = null;
@@ -84,6 +114,15 @@ public class JsonUtil {
         return obj;
     }
 
+    /**
+     * 
+     * @Description: jsonToObjectHashMap 
+     * @param json
+     * @param keyClass
+     * @param valueClass
+     * @return type
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
     public static <type> type jsonToObjectHashMap(String json,
                                                   Class<?> keyClass, Class<?> valueClass) {
         type obj = null;
@@ -96,6 +135,12 @@ public class JsonUtil {
         return obj;
     }
 
+    /**
+     * @Description: objectToJson 
+     * @param o
+     * @return String
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
     public static String objectToJson(Object o) {
         String json = "";
         try {
@@ -105,4 +150,14 @@ public class JsonUtil {
         }
         return json;
     }
+    
+    /**
+     * @Description: Just For Test
+     */
+    public static void main(String[] args) {
+		
+    	String objectToJson = objectToJson("HelloWorld!");
+    	System.out.println(objectToJson);
+    	//Output "HelloWorld!"
+	}
 }

@@ -11,9 +11,18 @@ package cn.ucaner.netty.rpc.registry;
  */
 public interface Constant {
 
+	/**
+	 * zookeeper 连接超时时间
+	 */
     int ZK_SESSION_TIMEOUT = 5000;
 
+    /**
+     * zookeeper 注册路径
+     */
     String ZK_REGISTRY_PATH = "/registry";
     
+    /**
+     * zookeeper 数据路径
+     */
     String ZK_DATA_PATH = ZK_REGISTRY_PATH + "/data";
 }

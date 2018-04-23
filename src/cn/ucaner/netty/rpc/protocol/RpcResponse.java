@@ -11,10 +11,19 @@ package cn.ucaner.netty.rpc.protocol;
  */
 public class RpcResponse {
 	
+	/**
+	 * request Identify
+	 */
     private String requestId;
     
+    /**
+     * error message
+     */
     private String error;
     
+    /**
+     * result Object 
+     */
     private Object result;
 
     public boolean isError() {

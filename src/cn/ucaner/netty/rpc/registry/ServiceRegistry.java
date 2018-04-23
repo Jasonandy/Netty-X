@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 /**
 * @Package：cn.ucaner.netty.rpc.registry   
 * @ClassName：ServiceRegistry   
-* @Description：   <p> 服务注册 </p>
+* @Description：   <p> 服务注册    -- 注册Rpc服务</p>
 * @Author： - huangyong luxiaoxun https://github.com/luxiaoxun/NettyRpc    
 * @Modify By：   
 * @Modify marker：   
@@ -25,8 +25,14 @@ public class ServiceRegistry {
 
     private static final Logger logger = LoggerFactory.getLogger(ServiceRegistry.class);
 
+    /**
+     * 闭锁  -  http://www.importnew.com/15731.html
+     */
     private CountDownLatch latch = new CountDownLatch(1);
 
+    /**
+     * 注册地址
+     */
     private String registryAddress;
 
     public ServiceRegistry(String registryAddress) {

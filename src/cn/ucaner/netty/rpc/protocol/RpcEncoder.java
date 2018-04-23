@@ -17,15 +17,22 @@ import io.netty.handler.codec.MessageToByteEncoder;
  */
 public class RpcEncoder extends MessageToByteEncoder<Object> {
 
+	//泛型类
     private Class<?> genericClass;
 
+    //泛型指定
     public RpcEncoder(Class<?> genericClass) {
         this.genericClass = genericClass;
     }
 
+    /**
+     * encode 对象encode处理  
+     * 序列化（对象 -> 字节数组）
+     */
     @Override
     public void encode(ChannelHandlerContext ctx, Object in, ByteBuf out) throws Exception {
         if (genericClass.isInstance(in)) {
+        	//序列化为数据 
             byte[] data = SerializationUtil.serialize(in);
             //byte[] data = JsonUtil.serialize(in); // Not use this, have some bugs
             out.writeInt(data.length);

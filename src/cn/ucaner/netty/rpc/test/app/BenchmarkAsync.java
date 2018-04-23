@@ -19,8 +19,8 @@ import cn.ucaner.netty.rpc.test.client.HelloService;
  */
 public class BenchmarkAsync {
 	
-    public static void main(String[] args) throws InterruptedException {
-        ServiceDiscovery serviceDiscovery = new ServiceDiscovery("127.0.0.1:2181");
+    public static void main(String[] args) throws InterruptedException {//67.218.158.137:2181 127.0.0.1:8280
+        ServiceDiscovery serviceDiscovery = new ServiceDiscovery("67.218.158.137:2181");
         final RpcClient rpcClient = new RpcClient(serviceDiscovery);
 
         int threadNum = 10;

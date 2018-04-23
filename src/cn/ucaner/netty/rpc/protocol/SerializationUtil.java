@@ -45,6 +45,8 @@ public class SerializationUtil {
     @SuppressWarnings("unchecked")
     public static <T> byte[] serialize(T obj) {
         Class<T> cls = (Class<T>) obj.getClass();
+        //Protostuff序列化
+        //Java自带序列化机制和ProtoStuff的序列化(仅仅当作一种数据格式)的比较 From https://www.cnblogs.com/549294286/p/4612601.html
         LinkedBuffer buffer = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);
         try {
             Schema<T> schema = getSchema(cls);
@@ -56,6 +58,7 @@ public class SerializationUtil {
         }
     }
 
+    
     /**
      * 反序列化（字节数组 -> 对象）
      */

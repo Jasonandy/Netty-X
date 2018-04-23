@@ -18,7 +18,7 @@ import cn.ucaner.netty.rpc.client.ConnectManage;
 /**
 * @Package：cn.ucaner.netty.rpc.registry   
 * @ClassName：ServiceDiscovery   
-* @Description：   <p>  服务发现 </p>
+* @Description：   <p>  服务发现    --- 发现Rpc服务 </p>
 * @Author： - huangyong luxiaoxun https://github.com/luxiaoxun/NettyRpc   
 * @Modify By：   
 * @Modify marker：   
@@ -28,13 +28,27 @@ public class ServiceDiscovery {
 
     private static final Logger logger = LoggerFactory.getLogger(ServiceDiscovery.class);
 
+    /**
+     * 闭锁 统计数据  - http://www.importnew.com/15731.html
+     */
     private CountDownLatch latch = new CountDownLatch(1);
 
+    /**
+     * volatile  http://www.importnew.com/18126.html
+     */
     private volatile List<String> dataList = new ArrayList<>();
 
+    /**
+     * 注册地址
+     */
     private String registryAddress;
+    
+    /**
+     * ZooKeeper  -- org.apache.zookeeper
+     */
     private ZooKeeper zookeeper;
 
+    
     public ServiceDiscovery(String registryAddress) {
         this.registryAddress = registryAddress;
         zookeeper = connectServer();

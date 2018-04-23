@@ -34,7 +34,17 @@ import cn.ucaner.netty.rpc.registry.ServiceRegistry;
 * @Package：cn.ucaner.netty.rpc.server   
 * @ClassName：RpcServer   
 * @Description：   <p> RpcServer http://www.cnblogs.com/luxiaoxun/p/5272384.html 
-* </br> https://my.oschina.net/huangyong/blog/361751 </p>
+* </br> https://my.oschina.net/huangyong/blog/361751 
+* 
+* </br> InitializingBean- https://www.cnblogs.com/study-everyday/p/6257127.html
+* 		为bean提供了初始化方法的方式，它只包括afterPropertiesSet方法，凡是继承该接口的类，在初始化bean的时候会执行该方法
+* 
+* </br> ApplicationContextAware  - https://blog.csdn.net/bailinbbc/article/details/76446594
+* 		在某些特殊的情况下，Bean需要实现某个功能，但该功能必须借助于Spring容器才能实现，
+* 		此时就必须让该Bean先获取Spring容器，然后借助于Spring容器实现该功能。
+* 		为了让Bean获取它所在的Spring容器，可以让该Bean实现ApplicationContextAware接口。
+* 
+* </p>
 * @Author： -huangyong, luxiaoxun    https://github.com/luxiaoxun/NettyRpc  
 * @Modify By：   
 * @Modify marker：   
@@ -64,6 +74,9 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
         this.serviceRegistry = serviceRegistry;
     }
 
+    /**
+     * RpcService 检测到注解   加载注解过的Interface到applicationContext   add By Jason
+     */
     @Override
     public void setApplicationContext(ApplicationContext ctx) throws BeansException {
         Map<String, Object> serviceBeanMap = ctx.getBeansWithAnnotation(RpcService.class);
@@ -76,6 +89,12 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
         }
     }
 
+    /**
+     * afterPropertiesSet 所有的属性被初始化后调用,但是会在init前调用。
+     * @Lazy(false)  - 这样spring容器初始化的时候afterPropertiesSet就会被调用
+     * 调用afterPropertiesSet方法,通过这个方法,你可以检查你的bean是否正确地被初始化了.
+     * 当然,你也可以用init-method方法.这两种方式可以同时使用,调用的顺序为init-method后调用.
+     */
     @Override
     public void afterPropertiesSet() throws Exception {
         start();
@@ -111,6 +130,11 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
         return this;
     }
 
+    /**
+     * @Description: afterPropertiesSet 
+     * @throws Exception void
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
     public void start() throws Exception {
         if (bossGroup == null && workerGroup == null) {
             bossGroup = new NioEventLoopGroup();

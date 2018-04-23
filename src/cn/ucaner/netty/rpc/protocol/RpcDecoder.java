@@ -19,12 +19,23 @@ import java.util.List;
  */
 public class RpcDecoder extends ByteToMessageDecoder {
 
+	/**
+	 * 泛型类
+	 */
     private Class<?> genericClass;
 
+    /**
+    * RpcDecoder.    -- 构造指定
+    * @param genericClass
+     */
     public RpcDecoder(Class<?> genericClass) {
         this.genericClass = genericClass;
     }
 
+    
+    /**
+     * 对Encode 数据进行 Decode.
+     */
     @Override
     public final void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
         if (in.readableBytes() < 4) {
@@ -42,6 +53,7 @@ public class RpcDecoder extends ByteToMessageDecoder {
         byte[] data = new byte[dataLength];
         in.readBytes(data);
 
+        //反序列化（字节数组 -> 对象） 将字节数组反序列化成class对应的Object
         Object obj = SerializationUtil.deserialize(data, genericClass);
         //Object obj = JsonUtil.deserialize(data,genericClass); // Not use this, have some bugs
         out.add(obj);
