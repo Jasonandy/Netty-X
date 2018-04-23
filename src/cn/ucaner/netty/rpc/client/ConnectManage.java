@@ -36,10 +36,15 @@ public class ConnectManage {
     private volatile static ConnectManage connectManage;
 
     private EventLoopGroup eventLoopGroup = new NioEventLoopGroup(4);
-    private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(16, 16,
-            600L, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(65536));
+    
+    private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(16, 16,600L, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(65536));
 
+    /**
+     * https://blog.csdn.net/u011240877/article/details/77426423
+     * transient volatile Object[] elements 底层  - 对它的修改、读取具有“可见性”、“有序性”（但不保证原子性），因此可以不加同步块，直接读取。
+     */
     private CopyOnWriteArrayList<RpcClientHandler> connectedHandlers = new CopyOnWriteArrayList<>();
+    
     private Map<InetSocketAddress, RpcClientHandler> connectedServerNodes = new ConcurrentHashMap<>();
 
     private ReentrantLock lock = new ReentrantLock();

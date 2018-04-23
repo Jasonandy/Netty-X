@@ -31,9 +31,13 @@ public class RpcClientHandler extends SimpleChannelInboundHandler<RpcResponse> {
 	
     private static final Logger logger = LoggerFactory.getLogger(RpcClientHandler.class);
 
+    /**
+     * ConcurrentHashMap 需要处理的数据
+     */
     private ConcurrentHashMap<String, RPCFuture> pendingRPC = new ConcurrentHashMap<>();
 
     private volatile Channel channel;
+    
     private SocketAddress remotePeer;
 
     public Channel getChannel() {
