@@ -28,6 +28,7 @@ import cn.ucaner.netty.rpc.protocol.RpcResponse;
 * @version    V1.0
  */
 public class RpcClientHandler extends SimpleChannelInboundHandler<RpcResponse> {
+	
     private static final Logger logger = LoggerFactory.getLogger(RpcClientHandler.class);
 
     private ConcurrentHashMap<String, RPCFuture> pendingRPC = new ConcurrentHashMap<>();
@@ -66,6 +67,12 @@ public class RpcClientHandler extends SimpleChannelInboundHandler<RpcResponse> {
         channel.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
     }
 
+    /**
+     * @Description: sendRequest
+     * @param request
+     * @return RPCFuture
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
     public RPCFuture sendRequest(RpcRequest request) {
         final CountDownLatch latch = new CountDownLatch(1);
         RPCFuture rpcFuture = new RPCFuture(request);
@@ -81,7 +88,6 @@ public class RpcClientHandler extends SimpleChannelInboundHandler<RpcResponse> {
         } catch (InterruptedException e) {
             logger.error(e.getMessage());
         }
-
         return rpcFuture;
     }
 

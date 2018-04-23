@@ -30,10 +30,16 @@ public class PersonCallbackTest {
 
         try {
             IAsyncObjectProxy client = rpcClient.createAsync(PersonService.class);
-            int num = 5;
-            RPCFuture helloPersonFuture = client.call("GetTestPerson", "good", num);
+            int num = 100;
+            
+            //String funcName, Object... args ,num
+            //RPCFuture helloPersonFuture = client.call("GetTestPerson", "Name", num);
+            
+            RPCFuture helloPersonFuture = client.call("sayHelloNettyRpc",num);
             helloPersonFuture.addCallback(new AsyncRPCCallback() {
-                @Override
+            	
+                @SuppressWarnings("unchecked")
+				@Override
                 public void success(Object result) {
                     List<Person> persons = (List<Person>) result;
                     for (int i = 0; i < persons.size(); ++i) {

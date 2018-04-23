@@ -20,8 +20,20 @@ public interface HelloService {
 	 */
 	public String echo(String ping);
 	
+	/**
+	 * @Description: hello
+	 * @param name
+	 * @return String
+	 * @Autor: Jason - jasonandy@hotmail.com
+	 */
     String hello(String name);
 
+    /**
+     * @Description: hello
+     * @param person
+     * @return String
+	 * @Autor: Jason - jasonandy@hotmail.com
+     */
     String hello(Person person);
     
 }

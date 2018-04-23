@@ -21,8 +21,8 @@
             <list>
                 <!-- 引入jdbc配置文件 
                 <value>classpath*:/jdbc/jdbc.properties</value> -->
-                <!-- 引入log4j配置文件-->
-                <value>classpath*:/log4j/log4j.properties</value>
+                <!-- 引入log4j配置文件
+                <value>classpath*:/log4j/log4j.properties</value> -->
                 <!-- Rpc配置文件引入 -->
                 <value>classpath*:/rpc/rpc.properties</value>
             </list>
