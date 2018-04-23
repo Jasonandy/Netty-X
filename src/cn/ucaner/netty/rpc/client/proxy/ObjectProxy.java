@@ -15,14 +15,20 @@ import cn.ucaner.netty.rpc.protocol.RpcRequest;
 /**
 * @Package：cn.ucaner.netty.rpc.client.proxy   
 * @ClassName：ObjectProxy   
-* @Description：   <p> ObjectProxy </p>
+* @Description：   <p> ObjectProxy 
+* </br> InvocationHandler 代理实例的调用处理程序 实现的接口  https://www.cnblogs.com/LCcnblogs/p/6823982.html 
+* 
+* 
+* </p>
 * @Author： - luxiaoxun   - https://github.com/luxiaoxun/NettyRpc  
 * @Modify By：   
 * @Modify marker：   
 * @version    V1.0
  */
 public class ObjectProxy<T> implements InvocationHandler, IAsyncObjectProxy {
+	
     private static final Logger LOGGER = LoggerFactory.getLogger(ObjectProxy.class);
+    
     private Class<T> clazz;
 
     public ObjectProxy(Class<T> clazz) {
@@ -36,13 +42,15 @@ public class ObjectProxy<T> implements InvocationHandler, IAsyncObjectProxy {
             if ("equals".equals(name)) {
                 return proxy == args[0];
             } else if ("hashCode".equals(name)) {
+            	//https://blog.csdn.net/tbdp6411/article/details/46915981 
+            	//System.identityHashCode() - 是根据内存地址来产生hash值的
                 return System.identityHashCode(proxy);
             } else if ("toString".equals(name)) {
                 return proxy.getClass().getName() + "@" +
                         Integer.toHexString(System.identityHashCode(proxy)) +
                         ", with InvocationHandler " + this;
             } else {
-                throw new IllegalStateException(String.valueOf(method));
+                throw new IllegalStateException(String.valueOf(method));//"null" or this.toString
             }
         }
 
@@ -75,6 +83,8 @@ public class ObjectProxy<T> implements InvocationHandler, IAsyncObjectProxy {
         return rpcFuture;
     }
 
+    
+    
     private RpcRequest createRequest(String className, String methodName, Object[] args) {
         RpcRequest request = new RpcRequest();
         request.setRequestId(UUID.randomUUID().toString());
@@ -111,6 +121,7 @@ public class ObjectProxy<T> implements InvocationHandler, IAsyncObjectProxy {
         return request;
     }
 
+    
     private Class<?> getClassType(Object obj) {
         Class<?> classType = obj.getClass();
         String typeName = classType.getName();

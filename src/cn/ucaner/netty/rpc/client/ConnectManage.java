@@ -21,9 +21,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 /**
- * 
 * @Package：cn.ucaner.netty.rpc.client   
-* @ClassName：ConnectManage   
+* @ClassName：ConnectManage    连接管理器
 * @Description：   <p> RPC Connect Manage of ZooKeeper</p>
 * @Author： - luxiaoxun   - https://github.com/luxiaoxun/NettyRpc  
 * @Modify By：   
@@ -31,7 +30,9 @@ import java.util.concurrent.locks.ReentrantLock;
 * @version    V1.0
  */
 public class ConnectManage {
+	
     private static final Logger logger = LoggerFactory.getLogger(ConnectManage.class);
+    
     private volatile static ConnectManage connectManage;
 
     private EventLoopGroup eventLoopGroup = new NioEventLoopGroup(4);
