@@ -17,7 +17,7 @@ public class Benchmark {
 
     public static void main(String[] args) throws InterruptedException {
 
-        ServiceDiscovery serviceDiscovery = new ServiceDiscovery("10.245.247.105:2181");
+        ServiceDiscovery serviceDiscovery = new ServiceDiscovery("67.218.158.137:2181");
         
         final RpcClient rpcClient = new RpcClient(serviceDiscovery);
 

@@ -58,6 +58,9 @@ public class RPCFuture implements Future<Object> {
         }
     }
 
+    /**
+     * getObject
+     */
     @Override
     public Object get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
         boolean success = sync.tryAcquireNanos(-1, unit.toNanos(timeout));

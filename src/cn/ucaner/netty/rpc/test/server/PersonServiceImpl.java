@@ -30,4 +30,11 @@ public class PersonServiceImpl implements PersonService {
         }
         return persons;
     }
+
+	@Override
+	public void sayHelloNettyRpc(int num) {
+		for (int i = 0; i < num; i++) {
+			System.out.println("HelloNettyRpc : "+i);
+		}
+	}
 }

@@ -3,9 +3,6 @@ package cn.ucaner.netty.rpc.test.client;
 import java.util.List;
 
 /**
- * Created by luxiaoxun on 2016-03-10.
- */
-/**
 * @Package：cn.ucaner.netty.rpc.test.client   
 * @ClassName：PersonService   
 * @Description：   <p> PersonService </p>
@@ -16,5 +13,17 @@ import java.util.List;
  */
 public interface PersonService {
 	
+	/**
+	 * @Description: GetTestPerson
+	 * @param name
+	 * @param num
+	 * @return List<Person>
+	 */
     List<Person> GetTestPerson(String name, int num);
+    
+    /**
+     * @Description: sayHelloNettyRpc
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
+    void sayHelloNettyRpc(int num);
 }

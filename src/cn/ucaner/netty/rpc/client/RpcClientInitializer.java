@@ -19,6 +19,10 @@ import cn.ucaner.netty.rpc.protocol.RpcResponse;
 * @version    V1.0
  */
 public class RpcClientInitializer extends ChannelInitializer<SocketChannel> {
+	
+	/**
+	 * initChannel  初始化通道 
+	 */
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         ChannelPipeline cp = socketChannel.pipeline();

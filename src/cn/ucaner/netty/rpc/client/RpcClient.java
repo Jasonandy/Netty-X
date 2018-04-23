@@ -21,8 +21,14 @@ import cn.ucaner.netty.rpc.registry.ServiceDiscovery;
  */
 public class RpcClient {
 
+	/**
+	 * Rpc服务地址
+	 */
     private String serverAddress;
     
+    /**
+     * ServiceDiscovery 
+     */
     private ServiceDiscovery serviceDiscovery;
     
     private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(16, 16,
@@ -36,6 +42,12 @@ public class RpcClient {
         this.serviceDiscovery = serviceDiscovery;
     }
 
+    /**
+     * @Description: create  创建代理类
+     * @param interfaceClass 接口
+     * @return T Type
+     * @Autor: Jason - jasonandy@hotmail.com
+     */
     @SuppressWarnings("unchecked")
     public static <T> T create(Class<T> interfaceClass) {
         return (T) Proxy.newProxyInstance(

@@ -25,15 +25,23 @@ public class PersonCallbackTest {
     public static void main(String[] args) {
     	//67.218.158.137:2181 127.0.0.1:8280
         ServiceDiscovery serviceDiscovery = new ServiceDiscovery("67.218.158.137:2181");
+        
         final RpcClient rpcClient = new RpcClient(serviceDiscovery);
+        
         final CountDownLatch countDownLatch = new CountDownLatch(1);
 
         try {
             IAsyncObjectProxy client = rpcClient.createAsync(PersonService.class);
-            int num = 5;
-            RPCFuture helloPersonFuture = client.call("GetTestPerson", "good", num);
+            int num = 100;
+            
+            //String funcName, Object... args ,num
+            //RPCFuture helloPersonFuture = client.call("GetTestPerson", "Name", num);
+            
+            RPCFuture helloPersonFuture = client.call("sayHelloNettyRpc",num);
             helloPersonFuture.addCallback(new AsyncRPCCallback() {
-                @Override
+            	
+                @SuppressWarnings("unchecked")
+				@Override
                 public void success(Object result) {
                     List<Person> persons = (List<Person>) result;
                     for (int i = 0; i < persons.size(); ++i) {

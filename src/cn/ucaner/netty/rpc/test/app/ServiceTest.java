@@ -35,9 +35,10 @@ import cn.ucaner.netty.rpc.test.interfaces.HelloNettyRpc;
 * @version    V1.0
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:/rpc/client/client-rpc.xml")
+//@ContextConfiguration(locations = {"classpath:/rpc/client/client-rpc.xml","classpath:/rpc/rpc.xml","classpath*:/spring-framework.xml"})
+@ContextConfiguration(locations ="classpath:/rpc/client/client-rpc.xml")
 public class ServiceTest {
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(ServiceTest.class);
 	
     @Autowired

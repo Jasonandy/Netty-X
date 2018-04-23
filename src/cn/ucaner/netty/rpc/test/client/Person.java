@@ -11,7 +11,14 @@ package cn.ucaner.netty.rpc.test.client;
  */
 public class Person {
 
+	/**
+	 * 姓
+	 */
     private String firstName;
+    
+    /**
+     * 名
+     */
     private String lastName;
 
     public Person() {
