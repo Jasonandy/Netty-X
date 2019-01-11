@@ -19,7 +19,15 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * 丢弃任何进入的数据 启动服务端的DiscardServerHandler
+* @Package：cn.ucaner.netty.demo.server   
+* @ClassName：DiscardServer   
+* @Description：   <p> 丢弃任何进入的数据 启动服务端的DiscardServerHandler </p>
+* @Author： - Jason    
+* @CreatTime：2019年1月10日 下午9:42:40   
+* @Modify By：   
+* @ModifyTime：  2019年1月10日
+* @Modify marker：   
+* @version    V1.0
  */
 public class DiscardServer {
 

@@ -1,3 +1,18 @@
+/******************************************************************************
+* ~ Copyright (c) 2018 [jasonandy@hotmail.com | https://github.com/Jasonandy] *
+* ~                                                                           *
+* ~ Licensed under the Apache License, Version 2.0 (the "License”);           * 
+* ~ you may not use this file except in compliance with the License.          *
+* ~ You may obtain a copy of the License at                                   *
+* ~                                                                           *
+* ~    http://www.apache.org/licenses/LICENSE-2.0                             *
+* ~                                                                           *
+* ~ Unless required by applicable law or agreed to in writing, software       *
+* ~ distributed under the License is distributed on an "AS IS" BASIS,         *
+* ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  *
+* ~ See the License for the specific language governing permissions and       *
+* ~ limitations under the License.                                            *
+******************************************************************************/
 package cn.ucaner.netty.rpc.protocol;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -27,8 +42,7 @@ public class JsonUtil {
     private static ObjectMapper objMapper = new ObjectMapper();
 
     static {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         objMapper.setDateFormat(dateFormat);
         objMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         objMapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -101,8 +115,7 @@ public class JsonUtil {
      * @return type
      * @Autor: Jason - jasonandy@hotmail.com
      */
-    public static <type> type jsonToObjectList(String json,
-                                               Class<?> collectionClass, Class<?>... elementClass) {
+    public static <type> type jsonToObjectList(String json, Class<?> collectionClass, Class<?>... elementClass) {
         type obj = null;
         JavaType javaType = objMapper.getTypeFactory().constructParametricType(
                 collectionClass, elementClass);
@@ -123,8 +136,7 @@ public class JsonUtil {
      * @return type
      * @Autor: Jason - jasonandy@hotmail.com
      */
-    public static <type> type jsonToObjectHashMap(String json,
-                                                  Class<?> keyClass, Class<?> valueClass) {
+    public static <type> type jsonToObjectHashMap(String json, Class<?> keyClass, Class<?> valueClass) {
         type obj = null;
         JavaType javaType = objMapper.getTypeFactory().constructParametricType(HashMap.class, keyClass, valueClass);
         try {

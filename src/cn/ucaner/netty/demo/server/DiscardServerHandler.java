@@ -16,11 +16,20 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 
-
 /**
- * 服务端处理通道.这里只是打印一下请求的内容，并不对请求进行任何的响应 DiscardServerHandler 继承自
- * ChannelHandlerAdapter， 这个类实现了ChannelHandler接口， ChannelHandler提供了许多事件处理的接口方法，
- * 然后你可以覆盖这些方法。 现在仅仅只需要继承ChannelHandlerAdapter类而不是你自己去实现接口方法。
+* @Package：cn.ucaner.netty.demo.server   
+* @ClassName：DiscardServerHandler   
+* @Description：   <p> 
+* 服务端处理通道.这里只是打印一下请求的内容，并不对请求进行任何的响应 DiscardServerHandler 继承自
+* ChannelHandlerAdapter， 这个类实现了ChannelHandler接口， ChannelHandler提供了许多事件处理的接口方法，
+* 然后你可以覆盖这些方法。 现在仅仅只需要继承ChannelHandlerAdapter类而不是你自己去实现接口方法。
+* </p>
+* @Author： - Jason    
+* @CreatTime：2019年1月10日 下午9:43:16   
+* @Modify By：   
+* @ModifyTime：  2019年1月10日
+* @Modify marker：   
+* @version    V1.0
  */
 public class DiscardServerHandler extends ChannelHandlerAdapter{
 

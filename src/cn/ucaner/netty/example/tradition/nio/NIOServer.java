@@ -1,12 +1,18 @@
-/**
- * <html>
- * <body>
- *  <P> Copyright 1994-2018 JasonInternational </p>
- *  <p> All rights reserved.</p>
- *  <p> Created by Jason</p>
- *  </body>
- * </html>
- */
+/******************************************************************************
+* ~ Copyright (c) 2018 [jasonandy@hotmail.com | https://github.com/Jasonandy] *
+* ~                                                                           *
+* ~ Licensed under the Apache License, Version 2.0 (the "License”);           * 
+* ~ you may not use this file except in compliance with the License.          *
+* ~ You may obtain a copy of the License at                                   *
+* ~                                                                           *
+* ~    http://www.apache.org/licenses/LICENSE-2.0                             *
+* ~                                                                           *
+* ~ Unless required by applicable law or agreed to in writing, software       *
+* ~ distributed under the License is distributed on an "AS IS" BASIS,         *
+* ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  *
+* ~ See the License for the specific language governing permissions and       *
+* ~ limitations under the License.                                            *
+******************************************************************************/
 package cn.ucaner.netty.example.tradition.nio;
 
 import java.io.IOException;
@@ -40,7 +46,7 @@ public class NIOServer {
 	/**
 	 * @Description: 获得一个ServerSocket通道，并对该通道做一些初始化的工作
 	 * @param port   绑定的端口号
-	 * @throws IOException void
+	 * @throws IOException io异常
 	 * @Autor: Jason - Jasonandy@hotmail.com
 	 */
 	public void initServer(int port) throws IOException {
@@ -59,11 +65,11 @@ public class NIOServer {
 
 	/**
 	 * @Description: 采用轮询的方式监听selector上是否有需要处理的事件，如果有，则进行处理
-	 * @throws IOException void
+	 * @throws IOException 
 	 * @Autor: Jason - Jasonandy@hotmail.com
 	 */
 	public void listen() throws IOException {
-		System.out.println("Started success Server！");
+		System.out.println("...Started success Server! [启动完成]...");
 		// 轮询访问selector
 		while (true) {
 			// 当注册的事件到达时，方法返回；否则,该方法会一直阻塞
@@ -82,7 +88,7 @@ public class NIOServer {
 	/**
 	 * @Description: 处理请求
 	 * @param key
-	 * @throws IOException void
+	 * @throws IOException 
 	 * @Autor: Jason - Jasonandy@hotmail.com
 	 */
 	public void handler(SelectionKey key) throws IOException {
@@ -118,7 +124,7 @@ public class NIOServer {
 	/**
 	 * @Description: 处理读的事件
 	 * @param key
-	 * @throws IOException void
+	 * @throws IOException 
 	 * @Autor: Jason - Jasonandy@hotmail.com
 	 */
 	public void handelerRead(SelectionKey key) throws IOException {
@@ -144,7 +150,7 @@ public class NIOServer {
 	/**
 	 * @Description: 启动服务端测试
 	 * @param args
-	 * @throws IOException void
+	 * @throws IOException 
 	 * @Autor: Jason - Jasonandy@hotmail.com
 	 */
 	public static void main(String[] args) throws IOException {
