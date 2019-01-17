@@ -82,7 +82,8 @@ public class ConnectManage {
         return connectManage;
     }
 
-    public void updateConnectedServer(List<String> allServerAddress) {
+    @SuppressWarnings("unlikely-arg-type")
+	public void updateConnectedServer(List<String> allServerAddress) {
         if (allServerAddress != null) {
             if (allServerAddress.size() > 0) {  // Get available server node
                 //update local serverNodes cache
